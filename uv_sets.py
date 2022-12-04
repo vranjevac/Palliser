@@ -11,7 +11,10 @@ bpy.context.object.data.uv_layers['uv_fabrics'].active = True
 bpy.ops.object.editmode_toggle()
 bpy.ops.uv.select_all(action='SELECT')
 
-bpy.ops.uv.zenuv_set_texel_density('INVOKE_DEFAULT')
+try:
+    bpy.ops.uv.zenuv_set_texel_density()
+except RuntimeError:
+    bpy.ops.uv.zenuv_set_texel_density('INVOKE_DEFAULT')
 
 bpy.ops.object.editmode_toggle()
 
